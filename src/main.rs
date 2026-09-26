@@ -2,6 +2,8 @@ use std::fs::File;
 use std::io::{self,Write};
 use std::io::BufWriter;
 
+mod vec3;
+use vec3::Vec3;
 fn main() -> io::Result<()> {
 
     let file = File::create("image.ppm")?;
@@ -31,3 +33,4 @@ fn main() -> io::Result<()> {
     Ok(())
 
 }
+
