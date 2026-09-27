@@ -3,6 +3,7 @@ use std::io::{self,Write};
 use std::io::BufWriter;
 
 mod vec3;
+mod ray;
 mod color;
 use vec3::{Vec3,Color};
 use color::write_color;
