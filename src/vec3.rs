@@ -3,34 +3,38 @@ use std::ops::{Add,Sub,Mul,Div};
 use std::fmt;
 
 #[derive(Default,Clone,Copy)]
-pub struct Vec3(f64,f64,f64);
+pub struct Vec3(pub f64,pub f64,pub f64);
 pub type Point3 = Vec3;
 pub type Color = Vec3;
+#[allow(non_upper_case_globals)]
+pub const Point3: fn(f64, f64, f64) -> Vec3 = Vec3;
+#[allow(non_upper_case_globals)]
+pub const Color: fn(f64, f64, f64) -> Vec3 = Vec3;
 
 
 
 impl Vec3 {
-    fn x(&self) -> f64 {
+    pub fn x(&self) -> f64 {
         self.0
     }
 
-    fn y(&self) -> f64 {
+    pub fn y(&self) -> f64 {
         self.1
     }
 
-    fn z(&self) -> f64 {
+    pub fn z(&self) -> f64 {
         self.2
     }
 
-    fn length_squared(&self) -> f64 {
+    pub fn length_squared(&self) -> f64 {
         self.0 * self.0 + self.1 * self.1 + self.2 * self.2
     }
 
-    fn length(&self) -> f64 {
+    pub fn length(&self) -> f64 {
         self.length_squared().sqrt()
     }
 
-    fn normalize(&mut self) -> () {
+    pub fn normalize(&mut self) -> () {
         let l = self.length();
         *self /= l
     }

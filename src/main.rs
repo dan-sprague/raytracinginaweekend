@@ -3,7 +3,9 @@ use std::io::{self,Write};
 use std::io::BufWriter;
 
 mod vec3;
-use vec3::Vec3;
+mod color;
+use vec3::{Vec3,Color};
+use color::write_color;
 fn main() -> io::Result<()> {
 
     let file = File::create("image.ppm")?;
@@ -21,11 +23,12 @@ fn main() -> io::Result<()> {
             let g = j as f64 / height as f64;
             let b = 0.0;
 
-            let ir = (255.999 * r) as usize;
-            let ig = (255.999 * g) as usize;
-            let ib = (255.999 * b) as usize;
+            let pixel_color = Color(r,g,b);
 
-            writeln!(writer,"{} {} {}", ir, ig, ib)?;
+            write_color(&mut writer,&pixel_color)?;
+
+
+            
         }
     }
 
